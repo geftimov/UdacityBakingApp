@@ -1,0 +1,70 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.eftimoff.bakingapp"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+
+    /////////////////////////////////////////////////////
+    ///              RELEASE LIBRARIES                ///
+    /////////////////////////////////////////////////////
+
+    implementation rootProject.ext.dependencies.kotlin
+    implementation rootProject.ext.dependencies.supportCompat
+    implementation rootProject.ext.dependencies.supportDesign
+    implementation rootProject.ext.dependencies.constraintLayout
+
+    /////////////////////////////////////////////////////
+    ///            INSTRUMENTATION TESTS              ///
+    /////////////////////////////////////////////////////
+
+    // Espresso UI Testing dependencies
+    androidTestImplementation rootProject.ext.dependencies.espressoCore
+    androidTestImplementation rootProject.ext.dependencies.espressoIntents
+    androidTestImplementation rootProject.ext.dependencies.espressoContrib
+
+    // Android Testing Support Library's runner, rules and assertion
+    androidTestImplementation rootProject.ext.dependencies.testRules
+    androidTestImplementation rootProject.ext.dependencies.testRunner
+    androidTestImplementation rootProject.ext.dependencies.assertjAndroid
+
+    // Spoon
+    androidTestImplementation rootProject.ext.dependencies.spoon
+
+    // Idling Resources
+    androidTestImplementation rootProject.ext.dependencies.espressoIdlingResource
+    androidTestImplementation rootProject.ext.dependencies.espressoIdlingConcurrent
+    androidTestImplementation rootProject.ext.dependencies.espressoIdlingNet
+
+    /////////////////////////////////////////////////////
+    ///                  UNIT TESTS                   ///
+    /////////////////////////////////////////////////////
+
+    // Dependencies for local unit tests
+    testImplementation rootProject.ext.dependencies.leakcanaryNoOp
+    testImplementation rootProject.ext.dependencies.junit
+    testImplementation rootProject.ext.dependencies.mockito
+    testImplementation rootProject.ext.dependencies.assertJ
+    testImplementation rootProject.ext.dependencies.assertjAndroid
+}
