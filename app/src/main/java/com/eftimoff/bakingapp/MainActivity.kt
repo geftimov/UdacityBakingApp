@@ -1,12 +1,19 @@
 package com.eftimoff.bakingapp
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.eftimoff.bakingapp.app.extensions.replace
+import com.eftimoff.bakingapp.app.view.BaseActivity
+import com.eftimoff.bakingapp.recipelist.view.RecipeListFragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        supportFragmentManager.replace(RecipeListFragment.newInstance())
+    }
+
+    override fun getLayoutRes(): Int {
+        return R.layout.activity_main
     }
 }
