@@ -31,12 +31,31 @@ dependencies {
     ///              RELEASE LIBRARIES                ///
     /////////////////////////////////////////////////////
 
+    //Support libraries
     implementation rootProject.ext.dependencies.kotlin
     implementation rootProject.ext.dependencies.supportCompat
     implementation rootProject.ext.dependencies.supportDesign
     implementation rootProject.ext.dependencies.constraintLayout
+    //Dependency injection
     implementation rootProject.ext.dependencies.dagger
     kapt rootProject.ext.dependencies.daggerCompiler
+    //Gson serialization library
+    implementation rootProject.ext.dependencies.gson
+    //RxJava
+    implementation rootProject.ext.dependencies.rxandroid
+    implementation rootProject.ext.dependencies.rxjava
+    //Images
+    implementation rootProject.ext.dependencies.glide
+    //Network
+    implementation rootProject.ext.dependencies.okhttp
+    implementation rootProject.ext.dependencies.okhttpLogging
+    implementation rootProject.ext.dependencies.retrofit
+    implementation rootProject.ext.dependencies.retrofitGson
+    implementation rootProject.ext.dependencies.retroftiRxJava
+    //Architecture components
+    implementation rootProject.ext.dependencies.archRuntime
+    implementation rootProject.ext.dependencies.archExtensions
+    kapt rootProject.ext.dependencies.archCompiler
 
     /////////////////////////////////////////////////////
     ///            INSTRUMENTATION TESTS              ///

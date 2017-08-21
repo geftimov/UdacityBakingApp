@@ -1,10 +1,14 @@
 package com.eftimoff.bakingapp.app.view
 
+import android.arch.lifecycle.LifecycleRegistry
+import android.arch.lifecycle.LifecycleRegistryOwner
 import android.os.Bundle
 import android.support.annotation.LayoutRes
 import android.support.v7.app.AppCompatActivity
 
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity(), LifecycleRegistryOwner {
+
+    var lifecycleRegistry : LifecycleRegistry = LifecycleRegistry(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -13,4 +17,8 @@ abstract class BaseActivity : AppCompatActivity() {
 
     @LayoutRes
     abstract fun getLayoutRes(): Int
+
+    override fun getLifecycle(): LifecycleRegistry {
+       return lifecycleRegistry
+    }
 }
