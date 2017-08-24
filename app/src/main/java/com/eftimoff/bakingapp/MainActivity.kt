@@ -9,8 +9,9 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        supportFragmentManager.replace(RecipeListFragment.newInstance())
+        if (savedInstanceState == null) {
+            supportFragmentManager.replace(RecipeListFragment.newInstance())
+        }
     }
 
     override fun getLayoutRes(): Int {

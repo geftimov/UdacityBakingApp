@@ -8,7 +8,6 @@ import com.eftimoff.bakingapp.recipelist.viewmodels.RecipeListViewModel
 import com.eftimoff.bakingapp.recipelist.viewmodels.RecipeListViewModelFactory
 import dagger.Module
 import dagger.Provides
-import io.reactivex.disposables.CompositeDisposable
 
 @Module
 class RecipeListModule(var recipeListFragment: RecipeListFragment) {
@@ -23,12 +22,6 @@ class RecipeListModule(var recipeListFragment: RecipeListFragment) {
     @PerFragment
     fun provideRecipeListViewModel(recipeListViewModelFactory: RecipeListViewModelFactory): RecipeListViewModel {
         return ViewModelProviders.of(recipeListFragment, recipeListViewModelFactory).get(RecipeListViewModel::class.java)
-    }
-
-    @Provides
-    @PerFragment
-    fun provideCompositeDisposable(): CompositeDisposable {
-        return CompositeDisposable()
     }
 
 }

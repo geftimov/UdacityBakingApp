@@ -8,6 +8,6 @@ import javax.inject.Inject
 class RecipeRepositoryImpl @Inject constructor() : RecipeRepository {
 
     override fun loadRecipes(): Flowable<List<Recipe>> {
-        return Flowable.just(listOf(Recipe("first"))).delay(20, TimeUnit.SECONDS)
+        return Flowable.just(listOf(Recipe("first"))).delay(10, TimeUnit.SECONDS)
     }
 }
