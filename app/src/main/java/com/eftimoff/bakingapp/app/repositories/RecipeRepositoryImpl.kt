@@ -1,13 +1,14 @@
 package com.eftimoff.bakingapp.app.repositories
 
 import com.eftimoff.bakingapp.app.models.Recipe
-import io.reactivex.Flowable
-import java.util.concurrent.TimeUnit
+import com.eftimoff.bakingapp.app.storage.remote.RemoteStorage
+import io.reactivex.Single
 import javax.inject.Inject
 
-class RecipeRepositoryImpl @Inject constructor() : RecipeRepository {
+class RecipeRepositoryImpl @Inject constructor(val remoteStorage: RemoteStorage) : RecipeRepository {
 
-    override fun loadRecipes(): Flowable<List<Recipe>> {
-        return Flowable.just(listOf(Recipe("first"))).delay(10, TimeUnit.SECONDS)
+    override fun loadRecipes(): Single<List<Recipe>> {
+        return remoteStorage.loadRecipes()
     }
+
 }

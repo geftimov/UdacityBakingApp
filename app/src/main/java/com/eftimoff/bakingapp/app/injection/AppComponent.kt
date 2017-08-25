@@ -5,9 +5,9 @@ import com.eftimoff.bakingapp.recipelist.di.RecipeListModule
 import dagger.Component
 
 @PerApplication
-@Component(modules = arrayOf(AppModule::class))
+@Component(modules = arrayOf(AppModule::class, NetworkModule::class))
 interface AppComponent {
 
     fun plus(module: RecipeListModule): RecipeListComponent
-    
+
 }
