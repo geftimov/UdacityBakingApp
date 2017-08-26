@@ -58,13 +58,17 @@ class NetworkModule {
 
     @Provides
     @PerApplication
-    fun provideRemoteApi(okHttpBuilder: OkHttpClient.Builder, retrofitBuilder: Retrofit.Builder, cache: Cache, gson: Gson, httpLoggingInterceptor: HttpLoggingInterceptor): RemoteApi {
+    fun provideOkHttpClient(okHttpBuilder: OkHttpClient.Builder, cache: Cache, httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
         okHttpBuilder.cache(cache)
         httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
         okHttpBuilder.addNetworkInterceptor(httpLoggingInterceptor)
 
-        val okHttpClient = okHttpBuilder.build()
+        return okHttpBuilder.build()
+    }
 
+    @Provides
+    @PerApplication
+    fun provideRemoteApi(okHttpClient: OkHttpClient, retrofitBuilder: Retrofit.Builder, gson: Gson): RemoteApi {
         return retrofitBuilder.client(okHttpClient)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))

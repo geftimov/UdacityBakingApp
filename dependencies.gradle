@@ -17,10 +17,11 @@ ext {
     butterknifeVersion = '8.4.0'
     timberVersion = '4.3.1'
     gsonVersion = '2.7'
-    dagger2Version = '2.7'
+    dagger2Version = '2.11'
     rxAndroidVersion = '2.0.1'
     rxJavaVersion = '2.0.8'
-    glideVersion = '3.7.0'
+    glideVersion = '4.0.0'
+    glideOkHttpVersion = '1.5.0'
     okHttpVersion = '3.6.0'
     retrofitVersion = '2.2.0'
     appdynamicsVersion = '4.2.9.0'
@@ -86,6 +87,8 @@ ext.dependencies = [
         rxjava                  : "io.reactivex.rxjava2:rxjava:$rxJavaVersion",
         //Glide
         glide                   : "com.github.bumptech.glide:glide:$glideVersion",
+        glideCompiler           : "com.github.bumptech.glide:compiler:$glideVersion",
+        glideOkHttp             : "com.github.bumptech.glide:okhttp3-integration:$glideVersion@aar",
         //OkHttp
         okhttp                  : "com.squareup.okhttp3:okhttp:$okHttpVersion",
         okhttpLogging           : "com.squareup.okhttp3:logging-interceptor:$okHttpVersion",

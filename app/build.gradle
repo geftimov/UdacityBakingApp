@@ -47,6 +47,8 @@ dependencies {
     implementation rootProject.ext.dependencies.rxjava
     //Images
     implementation rootProject.ext.dependencies.glide
+    implementation rootProject.ext.dependencies.glideOkHttp
+    kapt rootProject.ext.dependencies.glideCompiler
     //Network
     implementation rootProject.ext.dependencies.okhttp
     implementation rootProject.ext.dependencies.okhttpLogging

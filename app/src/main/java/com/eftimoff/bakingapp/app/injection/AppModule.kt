@@ -1,21 +1,15 @@
 package com.eftimoff.bakingapp.app.injection
 
 import android.content.Context
-import com.eftimoff.bakingapp.BakingApplication
 import dagger.Module
 import dagger.Provides
 
 @Module
-class AppModule(val app: BakingApplication) {
+class AppModule(val context: Context) {
 
     @Provides
     @PerApplication
     @ForApplication
-    fun provideApplication(): BakingApplication = app
-
-    @Provides
-    @PerApplication
-    @ForApplication
-    fun provideApplicationContext(): Context = app
+    fun provideApplicationContext(): Context = context
 
 }
