@@ -1,7 +1,10 @@
 package com.eftimoff.bakingapp.app.extensions
 
+import android.content.Context
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
+import android.view.LayoutInflater
+import android.view.View
 import com.eftimoff.bakingapp.R
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -20,4 +23,8 @@ fun FragmentManager.replace(container: Int, fragment: Fragment) {
 
 operator fun CompositeDisposable.plusAssign(disposable: Disposable) {
     add(disposable)
+}
+
+fun Context.inflate(layoutId: Int): View {
+    return LayoutInflater.from(this).inflate(layoutId, null)
 }

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Generic -->
+    <dimen name="minimum_tap_target_size">48dp</dimen>
+    <dimen name="margin_xxxxlarge">72dp</dimen>
+    <dimen name="margin_xxxlarge">64dp</dimen>
+    <dimen name="margin_xxlarge">32dp</dimen>
+    <dimen name="margin_xlarge">24dp</dimen>
+    <dimen name="margin_large">16dp</dimen>
+    <dimen name="margin_medium">12dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_xsmall">6dp</dimen>
+    <dimen name="margin_xxsmall">4dp</dimen>
+    <dimen name="margin_xxxsmall">2dp</dimen>
+
+    <dimen name="divider_height">1dp</dimen>
+
+    <!-- Text Sizes in sp -->
+    <dimen name="text_xxxxxxlarge">32sp</dimen>
+    <dimen name="text_xxxxxlarge">30sp</dimen>
+    <dimen name="text_xxxxlarge">28sp</dimen>
+    <dimen name="text_xxxlarge">24sp</dimen>
+    <dimen name="text_xxlarge">22sp</dimen>
+    <dimen name="text_xlarge">20sp</dimen>
+    <dimen name="text_large">18sp</dimen>
+    <dimen name="text_medium">16sp</dimen>
+    <dimen name="text_small">14sp</dimen>
+    <dimen name="text_xsmall">12sp</dimen>
+    <dimen name="text_xxsmall">11sp</dimen>
+
+</resources>

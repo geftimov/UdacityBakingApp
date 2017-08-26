@@ -34,6 +34,7 @@ dependencies {
     //Support libraries
     implementation rootProject.ext.dependencies.kotlin
     implementation rootProject.ext.dependencies.supportCompat
+    implementation rootProject.ext.dependencies.supportCardView
     implementation rootProject.ext.dependencies.supportDesign
     implementation rootProject.ext.dependencies.constraintLayout
     //Dependency injection
