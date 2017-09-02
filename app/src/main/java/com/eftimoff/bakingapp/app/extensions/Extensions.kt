@@ -34,3 +34,20 @@ fun Context.inflate(@LayoutRes layoutId: Int): View {
 fun Context.getInt(@IntegerRes intRes: Int): Int {
     return resources.getInteger(intRes)
 }
+
+fun Double.formatQuantity(n: Double): String {
+
+    if (n.toString().substring(n.toString().indexOf(".") + 1).toInt() == 0) {
+        return n.toInt().toString()
+    }
+
+    val denominator = (1 / Math.abs(n - n.toInt().toDouble())).toInt() //- 0.0001 so the division doesn't get affected by the float point aproximated representation
+    val units = n.toInt()
+
+    val numerator = units * denominator + 1
+    if (numerator > units + 1) {
+        return "$units 1/$denominator"
+    }
+
+    return "$numerator/$denominator"
+}

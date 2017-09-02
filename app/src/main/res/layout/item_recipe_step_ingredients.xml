@@ -12,9 +12,26 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:padding="@dimen/margin_small"
-        android:textColor="@color/colorAccent"
-        android:textSize="@dimen/text_medium"
-        tools:text="Step 1" />
+        android:paddingEnd="@dimen/margin_large"
+        android:paddingStart="@dimen/margin_large"
+        android:text="@string/ingredients"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_large" />
 
+    <TextView
+        android:id="@+id/recipeStepIngredientsList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_small"
+        android:paddingEnd="@dimen/margin_xlarge"
+        android:paddingStart="@dimen/margin_xlarge"
+        android:textColor="@color/dark_grey"
+        android:textSize="@dimen/text_medium"
+        tools:text="1/2 cup blueberries\n1/2 cup almond milk" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/dark_grey" />
 
 </LinearLayout>
