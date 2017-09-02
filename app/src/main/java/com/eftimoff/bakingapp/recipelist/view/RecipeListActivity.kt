@@ -1,11 +1,11 @@
-package com.eftimoff.bakingapp
+package com.eftimoff.bakingapp.recipelist.view
 
 import android.os.Bundle
+import com.eftimoff.bakingapp.R
 import com.eftimoff.bakingapp.app.extensions.replace
 import com.eftimoff.bakingapp.app.view.BaseActivity
-import com.eftimoff.bakingapp.recipelist.view.RecipeListFragment
 
-class MainActivity : BaseActivity() {
+class RecipeListActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,6 +15,6 @@ class MainActivity : BaseActivity() {
     }
 
     override fun getLayoutRes(): Int {
-        return R.layout.activity_main
+        return R.layout.activity_recipe_list
     }
 }

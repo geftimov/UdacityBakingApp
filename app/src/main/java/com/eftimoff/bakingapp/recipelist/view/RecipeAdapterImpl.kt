@@ -9,10 +9,11 @@ import javax.inject.Inject
 class RecipeAdapterImpl @Inject constructor() : RecipeAdapter() {
 
     private var recipes: List<Recipe> = arrayListOf()
+    private var callback: Callback? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
         val view = parent.context.inflate(R.layout.item_recipe)
-        return RecipeViewHolder(view)
+        return RecipeViewHolder(view, callback)
     }
 
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
@@ -25,6 +26,10 @@ class RecipeAdapterImpl @Inject constructor() : RecipeAdapter() {
 
     override fun setRecipes(recipes: List<Recipe>) {
         this.recipes = recipes
+    }
+
+    override fun setCallback(callback: Callback) {
+        this.callback = callback
     }
 
 }

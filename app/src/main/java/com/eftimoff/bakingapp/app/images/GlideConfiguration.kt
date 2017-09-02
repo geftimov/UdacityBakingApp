@@ -7,7 +7,7 @@ import com.bumptech.glide.annotation.GlideModule
 import com.bumptech.glide.integration.okhttp3.OkHttpUrlLoader
 import com.bumptech.glide.load.model.GlideUrl
 import com.bumptech.glide.module.AppGlideModule
-import com.eftimoff.bakingapp.BakingApplication
+import com.eftimoff.bakingapp.app.BakingApplication
 import okhttp3.OkHttpClient
 import java.io.InputStream
 import javax.inject.Inject

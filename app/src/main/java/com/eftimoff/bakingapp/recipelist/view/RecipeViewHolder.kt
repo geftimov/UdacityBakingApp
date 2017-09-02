@@ -7,9 +7,13 @@ import com.eftimoff.bakingapp.app.models.Recipe
 import com.eftimoff.bakingapp.app.view.BaseViewHolder
 import kotlinx.android.synthetic.main.item_recipe.view.*
 
-class RecipeViewHolder(itemView: View) : BaseViewHolder<Recipe>(itemView) {
+class RecipeViewHolder(itemView: View, var callback: RecipeAdapter.Callback?) : BaseViewHolder<Recipe>(itemView) {
 
     override fun bind(t: Recipe) {
+        itemView.recipeContainer.setOnClickListener {
+            callback?.onRecipeClicked(t)
+        }
+
         itemView.recipeName.text = t.name
         itemView.recipeServings.text = t.servings.toString()
         if (t.image.isNotBlank()) {

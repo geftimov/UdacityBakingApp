@@ -1,4 +1,4 @@
-package com.eftimoff.bakingapp
+package com.eftimoff.bakingapp.app
 
 import android.app.Application
 import android.content.Context

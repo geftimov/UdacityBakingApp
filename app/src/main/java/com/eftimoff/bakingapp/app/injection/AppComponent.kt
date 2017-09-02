@@ -1,6 +1,8 @@
 package com.eftimoff.bakingapp.app.injection
 
 import com.eftimoff.bakingapp.app.images.GlideConfiguration
+import com.eftimoff.bakingapp.recipedetails.di.RecipeDetailsComponent
+import com.eftimoff.bakingapp.recipelist.di.RecipeDetailsModule
 import com.eftimoff.bakingapp.recipelist.di.RecipeListComponent
 import com.eftimoff.bakingapp.recipelist.di.RecipeListModule
 import dagger.Component
@@ -10,6 +12,8 @@ import dagger.Component
 interface AppComponent {
 
     fun plus(module: RecipeListModule): RecipeListComponent
+
+    fun plus(module: RecipeDetailsModule): RecipeDetailsComponent
 
     fun inject(glideConfiguration: GlideConfiguration)
 

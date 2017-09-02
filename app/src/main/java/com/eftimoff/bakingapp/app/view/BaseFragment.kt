@@ -7,7 +7,7 @@ import android.support.annotation.LayoutRes
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.eftimoff.bakingapp.BakingApplication
+import com.eftimoff.bakingapp.app.BakingApplication
 import com.eftimoff.bakingapp.app.injection.AppComponent
 
 abstract class BaseFragment : LifecycleFragment() {

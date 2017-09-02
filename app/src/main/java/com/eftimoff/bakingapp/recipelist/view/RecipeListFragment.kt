@@ -9,6 +9,7 @@ import com.eftimoff.bakingapp.R
 import com.eftimoff.bakingapp.app.injection.AppComponent
 import com.eftimoff.bakingapp.app.models.Recipe
 import com.eftimoff.bakingapp.app.view.BaseFragment
+import com.eftimoff.bakingapp.recipedetails.view.RecipeDetailsActivity
 import com.eftimoff.bakingapp.recipelist.di.RecipeListModule
 import com.eftimoff.bakingapp.recipelist.viewmodels.RecipeListViewModel
 import com.eftimoff.bakingapp.recipelist.viewmodels.RecipeListViewModelFactory
@@ -16,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_recipe_list.*
 import javax.inject.Inject
 
 
-class RecipeListFragment : BaseFragment() {
+class RecipeListFragment : BaseFragment(), RecipeAdapter.Callback {
 
     @Inject
     lateinit var recipeListViewModelFactory: RecipeListViewModelFactory
@@ -44,6 +45,7 @@ class RecipeListFragment : BaseFragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        recipeAdapter.setCallback(this)
         recipeList.adapter = recipeAdapter
         recipeList.layoutManager = layoutManager
 
@@ -57,6 +59,10 @@ class RecipeListFragment : BaseFragment() {
 
     fun onRecipesSuccess(recipes: List<Recipe>) {
         recipeAdapter.setRecipes(recipes)
+    }
+
+    override fun onRecipeClicked(recipe: Recipe) {
+        RecipeDetailsActivity.start(context, recipe)
     }
 
 }

@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.eftimoff.bakingapp.MainActivity">
+    tools:context="com.eftimoff.bakingapp.recipelist.view.RecipeListActivity">
 
-    <FrameLayout
-        android:id="@+id/fragment_container"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recipeSteps"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

@@ -1,4 +1,9 @@
 <resources>
-    <string name="app_name">BakingApp</string>
+
+    <!-- Common -->
+    <string name="app_name">Kotlin Bakery</string>
+
+    <!-- Accessibility -->
     <string name="accessibility_servings">Servings</string>
+    
 </resources>
