@@ -9,18 +9,18 @@ import kotlinx.android.synthetic.main.item_recipe_step_ingredients.view.*
 class RecipeIngredientsViewHolder(itemView: View) : BaseViewHolder<List<Ingredient>>(itemView) {
 
     override fun bind(t: List<Ingredient>) {
-//        itemView.recipeContainer.setOnClickListener {
-//            callback?.onRecipeClicked(t)
-//        }
-//
         val builder: StringBuilder = StringBuilder()
+        t.forEachIndexed { index, it ->
 
-        t.forEach {
             val quantity = it.quantity.formatQuantity(it.quantity)
             val measure = it.measure.toLowerCase()
             val ingredient = it.ingredient.toLowerCase()
 
-            builder.append("$quantity $measure $ingredient\n")
+            builder.append("$quantity $measure $ingredient")
+            if (index != t.size - 1) {
+                builder.append("\n")
+            }
+
         }
         itemView.recipeStepIngredientsList.text = builder.toString()
     }

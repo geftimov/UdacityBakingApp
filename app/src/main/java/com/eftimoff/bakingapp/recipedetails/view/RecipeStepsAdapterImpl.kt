@@ -10,15 +10,15 @@ import javax.inject.Inject
 class RecipeStepsAdapterImpl @Inject constructor() : RecipeStepsAdapter() {
 
     private lateinit var recipe: Recipe
-
+    private lateinit var callback: Callback
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = parent.context.inflate(viewType)
         when (viewType) {
             R.layout.item_recipe_step_ingredients -> return RecipeIngredientsViewHolder(view)
-            R.layout.item_recipe_step -> return RecipeStepsViewHolder(view)
+            R.layout.item_recipe_step -> return RecipeStepsViewHolder(view, callback)
         }
-        return RecipeStepsViewHolder(view)
+        return RecipeStepsViewHolder(view, callback)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -36,13 +36,16 @@ class RecipeStepsAdapterImpl @Inject constructor() : RecipeStepsAdapter() {
         return R.layout.item_recipe_step
     }
 
-
     override fun getItemCount(): Int {
         return recipe.steps.size + 1
     }
 
     override fun setRecipe(recipe: Recipe) {
         this.recipe = recipe
+    }
+
+    override fun setCallback(callback: Callback) {
+        this.callback = callback
     }
 
 }

@@ -32,6 +32,20 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/dark_grey" />
+        android:layout_marginTop="@dimen/margin_small"
+        android:background="@color/light_grey" />
+
+    <TextView
+        android:id="@+id/recipeStepIngredientsSteps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:padding="@dimen/margin_small"
+        android:paddingEnd="@dimen/margin_large"
+        android:paddingStart="@dimen/margin_large"
+        android:text="@string/steps"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_large" />
 
 </LinearLayout>

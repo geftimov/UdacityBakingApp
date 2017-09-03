@@ -7,13 +7,15 @@ import android.view.View
 import com.eftimoff.bakingapp.R
 import com.eftimoff.bakingapp.app.injection.AppComponent
 import com.eftimoff.bakingapp.app.models.Recipe
+import com.eftimoff.bakingapp.app.models.Step
 import com.eftimoff.bakingapp.app.view.BaseFragment
 import com.eftimoff.bakingapp.app.view.EXTRA_RECIPE
 import com.eftimoff.bakingapp.recipelist.di.RecipeDetailsModule
+import com.eftimoff.bakingapp.recipestep.view.RecipeStepActivity
 import kotlinx.android.synthetic.main.fragment_recipe_details.*
 import javax.inject.Inject
 
-class RecipeDetailsFragment : BaseFragment() {
+class RecipeDetailsFragment : BaseFragment(), RecipeStepsAdapter.Callback {
 
     @Inject
     lateinit var recipeStepsAdapter: RecipeStepsAdapter
@@ -23,7 +25,7 @@ class RecipeDetailsFragment : BaseFragment() {
     companion object {
         fun newInstance(recipe: Recipe): RecipeDetailsFragment {
             val recipeDetailsFragment = RecipeDetailsFragment()
-            val bundle: Bundle = Bundle()
+            val bundle = Bundle()
             bundle.putParcelable(EXTRA_RECIPE, recipe)
             recipeDetailsFragment.arguments = bundle
             return recipeDetailsFragment
@@ -41,6 +43,8 @@ class RecipeDetailsFragment : BaseFragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        recipeStepsAdapter.setCallback(this)
+
         recipeSteps.adapter = recipeStepsAdapter
         recipeSteps.layoutManager = layoutManager
 
@@ -52,6 +56,10 @@ class RecipeDetailsFragment : BaseFragment() {
 
     private fun getRecipe(): Recipe {
         return arguments.getParcelable(EXTRA_RECIPE)
+    }
+
+    override fun onStepClicked(step: Step) {
+        RecipeStepActivity.start(context, step)
     }
 
 }

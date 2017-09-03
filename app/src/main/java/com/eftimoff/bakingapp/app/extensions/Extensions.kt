@@ -17,6 +17,13 @@ fun FragmentManager.replace(fragment: Fragment) {
             .commit()
 }
 
+fun FragmentManager.add(fragment: Fragment) {
+    beginTransaction()
+            .add(R.id.fragment_container, fragment)
+            .addToBackStack(fragment::class.java.canonicalName)
+            .commit()
+}
+
 fun FragmentManager.replace(container: Int, fragment: Fragment) {
     beginTransaction()
             .replace(container, fragment)

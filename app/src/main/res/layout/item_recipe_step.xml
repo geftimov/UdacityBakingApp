@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/recipeStepContainer"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/recipeStepNumber"
+        android:layout_width="@dimen/margin_xlarge"
+        android:layout_height="@dimen/margin_xlarge"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/margin_xlarge"
+        android:background="@drawable/ic_blue_circle"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_xxsmall"
+        tools:text="1" />
 
     <TextView
         android:id="@+id/recipeStepTitle"
@@ -15,6 +30,5 @@
         android:textColor="@color/dark_grey"
         android:textSize="@dimen/text_medium"
         tools:text="Step 1" />
-
 
 </LinearLayout>
