@@ -26,6 +26,7 @@ class RecipeAdapterImpl @Inject constructor() : RecipeAdapter() {
 
     override fun setRecipes(recipes: List<Recipe>) {
         this.recipes = recipes
+        notifyDataSetChanged()
     }
 
     override fun setCallback(callback: Callback) {

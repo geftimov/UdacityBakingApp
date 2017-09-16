@@ -16,7 +16,7 @@ class RecipeListViewModel(private var recipeRepository: RecipeRepository) : RxAw
 
     fun getData(): LiveData<List<Recipe>> {
         if (data == null) {
-            data = MutableLiveData<List<Recipe>>()
+            data = MutableLiveData()
             loadRecipes(data!!)
         }
         return data!!

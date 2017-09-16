@@ -23,6 +23,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility rootProject.ext.sourceCompatibilityVersion
+        targetCompatibility rootProject.ext.targetCompatibilityVersion
+    }
 }
 
 dependencies {
@@ -59,6 +64,8 @@ dependencies {
     implementation rootProject.ext.dependencies.archRuntime
     implementation rootProject.ext.dependencies.archExtensions
     kapt rootProject.ext.dependencies.archCompiler
+    //ExoPlayer
+    implementation rootProject.ext.dependencies.exoPlayer
 
     /////////////////////////////////////////////////////
     ///            INSTRUMENTATION TESTS              ///

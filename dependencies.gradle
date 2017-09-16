@@ -31,6 +31,7 @@ ext {
     photoViewVersion = '2.1.2'
     kotlinVersion = '1.1.4'
     archVersion = '1.0.0-alpha5'
+    exoPlayerVersion = 'r2.2.0'
 
     //DEBUG LIBRARIES
     stethoVersion = '1.4.1'
@@ -118,6 +119,8 @@ ext.dependencies = [
         roomRuntime             : "android.arch.persistence.room:runtime:$archVersion",
         roomCompiler            : "android.arch.persistence.room:compiler:$archVersion",
         roomRxJava2             : "android.arch.persistence.room:rxjava2:$archVersion",
+        //ExoPlayer
+        exoPlayer               : "com.google.android.exoplayer:exoplayer:$exoPlayerVersion",
 
         /////////////////////////////////////////////////////
         ///                DEBUG LIBRARIES                ///
