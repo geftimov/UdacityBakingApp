@@ -96,5 +96,4 @@ class RecipeStepFragment : BaseFragment() {
         }
     }
 
-
 }

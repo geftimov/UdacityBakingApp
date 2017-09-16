@@ -2,8 +2,10 @@ package com.eftimoff.bakingapp.recipestep.view
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.WindowManager
 import com.eftimoff.bakingapp.R
 import com.eftimoff.bakingapp.app.extensions.replace
 import com.eftimoff.bakingapp.app.models.Step
@@ -22,6 +24,19 @@ class RecipeStepActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        when (resources.configuration.orientation) {
+            Configuration.ORIENTATION_LANDSCAPE -> {
+                window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+                actionBar?.hide()
+                supportActionBar?.hide()
+            }
+            Configuration.ORIENTATION_PORTRAIT -> {
+                window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+                actionBar?.show()
+                supportActionBar?.show()
+            }
+        }
+
         if (savedInstanceState == null) {
             supportFragmentManager.replace(RecipeStepFragment.newInstance(getStep()))
         }

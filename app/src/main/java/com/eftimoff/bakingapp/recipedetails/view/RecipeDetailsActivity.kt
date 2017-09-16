@@ -28,7 +28,7 @@ class RecipeDetailsActivity : BaseActivity() {
     }
 
     override fun getLayoutRes(): Int {
-        return R.layout.activity_recipe_list
+        return R.layout.activity_recipe_details
     }
 
     private fun getRecipe(): Recipe {
