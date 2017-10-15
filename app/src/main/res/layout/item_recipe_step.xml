@@ -22,9 +22,8 @@
 
     <TextView
         android:id="@+id/recipeStepTitle"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:ellipsize="end"
         android:maxLines="1"
         android:padding="@dimen/margin_small"
         android:textColor="@color/dark_grey"

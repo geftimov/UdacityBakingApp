@@ -1,10 +1,12 @@
 package com.eftimoff.bakingapp.recipedetails.view
 
+import android.graphics.Color
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import com.eftimoff.bakingapp.R
 import com.eftimoff.bakingapp.app.extensions.inflate
 import com.eftimoff.bakingapp.app.models.Recipe
+import kotlinx.android.synthetic.main.item_recipe_step.view.*
 import javax.inject.Inject
 
 class RecipeStepsAdapterImpl @Inject constructor() : RecipeStepsAdapter() {
@@ -21,11 +23,26 @@ class RecipeStepsAdapterImpl @Inject constructor() : RecipeStepsAdapter() {
         return RecipeStepsViewHolder(view, callback)
     }
 
+    private var selectedPosition = -1
+
+
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is RecipeIngredientsViewHolder) {
             holder.bind(recipe.ingredients)
         } else if (holder is RecipeStepsViewHolder) {
-            holder.bind(recipe.steps[position - 1])
+            val step = recipe.steps[position - 1]
+            holder.bind(step)
+
+            holder.itemView.setBackgroundColor(if (selectedPosition == position) Color.LTGRAY else Color.TRANSPARENT)
+
+            holder.itemView.recipeStepContainer.setOnClickListener {
+                if (holder.getAdapterPosition() != RecyclerView.NO_POSITION) {
+                    notifyItemChanged(selectedPosition)
+                    selectedPosition = holder.getAdapterPosition()
+                    notifyItemChanged(selectedPosition)
+                    callback.onStepClicked(step)
+                }
+            }
         }
     }
 

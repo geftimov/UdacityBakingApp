@@ -8,10 +8,6 @@ import kotlinx.android.synthetic.main.item_recipe_step.view.*
 class RecipeStepsViewHolder(itemView: View, var callback: RecipeStepsAdapter.Callback?) : BaseViewHolder<Step>(itemView) {
 
     override fun bind(t: Step) {
-        itemView.recipeStepContainer.setOnClickListener {
-            callback?.onStepClicked(t)
-        }
-
         itemView.recipeStepTitle.text = t.shortDescription
         itemView.recipeStepNumber.text = (t.id + 1).toString()
     }

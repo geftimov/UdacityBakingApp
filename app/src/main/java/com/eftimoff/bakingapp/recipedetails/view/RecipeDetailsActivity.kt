@@ -12,6 +12,8 @@ import com.eftimoff.bakingapp.app.view.EXTRA_RECIPE
 
 class RecipeDetailsActivity : BaseActivity() {
 
+    private var isTablet: Boolean = false
+
     companion object {
         fun start(context: Context, recipe: Recipe) {
             val starter = Intent(context, RecipeDetailsActivity::class.java)
@@ -22,6 +24,7 @@ class RecipeDetailsActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        isTablet = resources.getBoolean(R.bool.isTablet)
         if (savedInstanceState == null) {
             supportFragmentManager.replace(RecipeDetailsFragment.newInstance(getRecipe()))
         }

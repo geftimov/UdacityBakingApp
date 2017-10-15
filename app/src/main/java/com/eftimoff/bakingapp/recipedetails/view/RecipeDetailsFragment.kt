@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.eftimoff.bakingapp.R
+import com.eftimoff.bakingapp.app.extensions.replace
 import com.eftimoff.bakingapp.app.injection.AppComponent
 import com.eftimoff.bakingapp.app.models.Recipe
 import com.eftimoff.bakingapp.app.models.Step
@@ -12,7 +13,9 @@ import com.eftimoff.bakingapp.app.view.BaseFragment
 import com.eftimoff.bakingapp.app.view.EXTRA_RECIPE
 import com.eftimoff.bakingapp.recipelist.di.RecipeDetailsModule
 import com.eftimoff.bakingapp.recipestep.view.RecipeStepActivity
+import com.eftimoff.bakingapp.recipestep.view.RecipeStepFragment
 import kotlinx.android.synthetic.main.fragment_recipe_details.*
+import kotlinx.android.synthetic.main.item_recipe_step.view.*
 import javax.inject.Inject
 
 class RecipeDetailsFragment : BaseFragment(), RecipeStepsAdapter.Callback {
@@ -21,6 +24,8 @@ class RecipeDetailsFragment : BaseFragment(), RecipeStepsAdapter.Callback {
     lateinit var recipeStepsAdapter: RecipeStepsAdapter
     @Inject
     lateinit var layoutManager: RecyclerView.LayoutManager
+
+    private var isTablet: Boolean = false
 
     companion object {
         fun newInstance(recipe: Recipe): RecipeDetailsFragment {
@@ -43,6 +48,8 @@ class RecipeDetailsFragment : BaseFragment(), RecipeStepsAdapter.Callback {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        isTablet = resources.getBoolean(R.bool.isTablet)
+
         recipeStepsAdapter.setCallback(this)
 
         recipeSteps.adapter = recipeStepsAdapter
@@ -52,6 +59,8 @@ class RecipeDetailsFragment : BaseFragment(), RecipeStepsAdapter.Callback {
 
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
         (activity as AppCompatActivity).supportActionBar?.title = getRecipe().name
+
+        if (isTablet) recipeSteps.post { recipeSteps.findViewHolderForAdapterPosition(1).itemView.recipeStepContainer.performClick() }
     }
 
     private fun getRecipe(): Recipe {
@@ -59,7 +68,11 @@ class RecipeDetailsFragment : BaseFragment(), RecipeStepsAdapter.Callback {
     }
 
     override fun onStepClicked(step: Step) {
-        RecipeStepActivity.start(context, step)
+        if (isTablet) {
+            activity.supportFragmentManager.replace(R.id.fragment_inner_container, RecipeStepFragment.newInstance(step))
+        } else {
+            RecipeStepActivity.start(activity, step)
+        }
     }
 
 }
