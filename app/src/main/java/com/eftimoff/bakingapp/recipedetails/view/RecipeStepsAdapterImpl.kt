@@ -33,7 +33,9 @@ class RecipeStepsAdapterImpl @Inject constructor() : RecipeStepsAdapter() {
             val step = recipe.steps[position - 1]
             holder.bind(step)
 
-            holder.itemView.setBackgroundColor(if (selectedPosition == position) Color.LTGRAY else Color.TRANSPARENT)
+            if (holder.itemView.context.resources.getBoolean(R.bool.isTablet)) {
+                holder.itemView.setBackgroundColor(if (selectedPosition == position) Color.LTGRAY else Color.TRANSPARENT)
+            }
 
             holder.itemView.recipeStepContainer.setOnClickListener {
                 if (holder.getAdapterPosition() != RecyclerView.NO_POSITION) {

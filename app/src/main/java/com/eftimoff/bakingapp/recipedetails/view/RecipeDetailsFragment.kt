@@ -14,6 +14,7 @@ import com.eftimoff.bakingapp.app.view.EXTRA_RECIPE
 import com.eftimoff.bakingapp.recipelist.di.RecipeDetailsModule
 import com.eftimoff.bakingapp.recipestep.view.RecipeStepActivity
 import com.eftimoff.bakingapp.recipestep.view.RecipeStepFragment
+import com.eftimoff.bakingapp.widgets.RecipeInfoWidgetManager
 import kotlinx.android.synthetic.main.fragment_recipe_details.*
 import kotlinx.android.synthetic.main.item_recipe_step.view.*
 import javax.inject.Inject
@@ -24,6 +25,9 @@ class RecipeDetailsFragment : BaseFragment(), RecipeStepsAdapter.Callback {
     lateinit var recipeStepsAdapter: RecipeStepsAdapter
     @Inject
     lateinit var layoutManager: RecyclerView.LayoutManager
+    @Inject
+    lateinit var recipeInfoWidgetManager: RecipeInfoWidgetManager
+
 
     private var isTablet: Boolean = false
 
@@ -54,6 +58,8 @@ class RecipeDetailsFragment : BaseFragment(), RecipeStepsAdapter.Callback {
 
         recipeSteps.adapter = recipeStepsAdapter
         recipeSteps.layoutManager = layoutManager
+
+        recipeInfoWidgetManager.updateWidgetRecipe(getRecipe())
 
         recipeStepsAdapter.setRecipe(getRecipe())
 

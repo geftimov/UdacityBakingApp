@@ -20,7 +20,7 @@ class GlideConfiguration : AppGlideModule() {
 
     override fun registerComponents(context: Context, glide: Glide?, registry: Registry) {
         super.registerComponents(context, glide, registry)
-        BakingApplication.get(context).inject(this)
+        BakingApplication.component.inject(this)
 
         registry.replace(GlideUrl::class.java, InputStream::class.java, OkHttpUrlLoader.Factory(okHttpClient))
         registry.replace(VideoThumbnailUrl::class.java, InputStream::class.java, VideoThumbnailFactory())
