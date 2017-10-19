@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.eftimoff.bakingapp.R
 import com.eftimoff.bakingapp.app.extensions.replace
+import com.eftimoff.bakingapp.app.extensions.toast
 import com.eftimoff.bakingapp.app.injection.AppComponent
 import com.eftimoff.bakingapp.app.models.Recipe
 import com.eftimoff.bakingapp.app.models.Step
@@ -59,7 +60,10 @@ class RecipeDetailsFragment : BaseFragment(), RecipeStepsAdapter.Callback {
         recipeSteps.adapter = recipeStepsAdapter
         recipeSteps.layoutManager = layoutManager
 
-        recipeInfoWidgetManager.updateWidgetRecipe(getRecipe())
+        recipeFab.setOnClickListener {
+            recipeInfoWidgetManager.updateWidgetRecipe(getRecipe())
+            toast(getString(R.string.widget_updated, getRecipe().name))
+        }
 
         recipeStepsAdapter.setRecipe(getRecipe())
 

@@ -2,12 +2,12 @@
 
     <!-- Common -->
     <string name="app_name">Kotlin Bakery</string>
-
-    <!-- Accessibility -->
-    <string name="accessibility_servings">Servings</string>
     <string name="ingredients">Ingredients</string>
     <string name="steps">Steps</string>
     <string name="widget_no_recipe">Not recipe selected</string>
-    <string name="ingredient_quantity_text">%1$d %2$s</string>
+    <string name="widget_updated">Widget updated for recipe : %1$s</string>
+
+    <!-- Accessibility -->
+    <string name="accessibility_servings">Servings</string>
 
 </resources>

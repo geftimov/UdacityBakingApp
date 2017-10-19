@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Toast
 import com.eftimoff.bakingapp.R
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -58,3 +59,15 @@ fun Double.formatQuantity(n: Double): String {
 
     return "$numerator/$denominator"
 }
+
+fun Fragment.toast(any: Any, time: Int = Toast.LENGTH_SHORT) = activity.toast(any.toString(), time)
+
+fun Fragment.toast(stringRes: Int, time: Int = Toast.LENGTH_SHORT) = activity.toast(getString(stringRes), time)
+
+fun Fragment.toast(message: CharSequence, time: Int = Toast.LENGTH_SHORT) = activity.toast(message, time)
+
+fun Context.toast(any: Any, time: Int = Toast.LENGTH_SHORT) = toast(any.toString(), time)
+
+fun Context.toast(stringRes: Int, time: Int = Toast.LENGTH_SHORT) = toast(getString(stringRes), time)
+
+fun Context.toast(message: CharSequence, time: Int = Toast.LENGTH_SHORT) = Toast.makeText(this, message, time).show()
