@@ -23,9 +23,8 @@ class RecipeListViewModel(private var recipeRepository: RecipeRepository) : RxAw
     }
 
     fun loadRecipes(data: MutableLiveData<List<Recipe>>) {
-        disposables += loadRecipesFromBackend().subscribe { items ->
-            data.value = items
-        }
+        disposables += loadRecipesFromBackend()
+                .subscribe({ t -> data.value = t }, { t -> println(t.localizedMessage) })
     }
 
     fun loadRecipesFromBackend(): Single<List<Recipe>> {
