@@ -7,7 +7,8 @@ ext {
     targetCompatibilityVersion = JavaVersion.VERSION_1_8
 
     //PLUGINS
-    pluginBuildGradleVersion = '3.0.0-beta2'
+    pluginBuildGradleVersion = '2.3.3'
+    pluginRetrolambdaVersion = '3.2.0'
 
     //RELEASE LIBRARIES
     adobeVersion = '4.13.1'
@@ -52,6 +53,7 @@ ext {
 ext.classpath = [
 
         android: "com.android.tools.build:gradle:$pluginBuildGradleVersion",
+        retrolambda: "me.tatarka:gradle-retrolambda:$pluginRetrolambdaVersion",
 
 ]
 ext.dependencies = [

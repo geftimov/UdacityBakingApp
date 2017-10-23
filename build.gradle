@@ -6,6 +6,7 @@ buildscript {
     dependencies {
         apply from: 'dependencies.gradle'
         classpath rootProject.ext.classpath.android
+        classpath rootProject.ext.classpath.retrolambda
     }
 }
 
