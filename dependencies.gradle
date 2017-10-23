@@ -29,7 +29,6 @@ ext {
     autoValueParcelVersion = '0.2.5'
     calligraphyVersion = '2.2.0'
     photoViewVersion = '2.1.2'
-    kotlinVersion = '1.1.4'
     archVersion = '1.0.0-alpha5'
     exoPlayerVersion = 'r2.2.0'
 
@@ -53,7 +52,6 @@ ext {
 ext.classpath = [
 
         android: "com.android.tools.build:gradle:$pluginBuildGradleVersion",
-        kotlin : "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
 
 ]
 ext.dependencies = [
@@ -107,10 +105,6 @@ ext.dependencies = [
         calligraphy             : "uk.co.chrisjenx:calligraphy:$calligraphyVersion",
         //Zoom ImageView library
         photoView               : "com.github.chrisbanes:PhotoView:$photoViewVersion",
-        //Kotlin
-        kotlin                  : "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlinVersion",
-        kotlinPlugin            : "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion",
-        kotlinTest              : "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion",
         //Architecture components
         archRuntime             : "android.arch.lifecycle:runtime:$archVersion",
         archExtensions          : "android.arch.lifecycle:extensions:$archVersion",

@@ -1,7 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -37,14 +34,16 @@ dependencies {
     /////////////////////////////////////////////////////
 
     //Support libraries
-    implementation rootProject.ext.dependencies.kotlin
     implementation rootProject.ext.dependencies.supportCompat
     implementation rootProject.ext.dependencies.supportCardView
     implementation rootProject.ext.dependencies.supportDesign
     implementation rootProject.ext.dependencies.constraintLayout
     //Dependency injection
     implementation rootProject.ext.dependencies.dagger
-    kapt rootProject.ext.dependencies.daggerCompiler
+    annotationProcessor rootProject.ext.dependencies.daggerCompiler
+    //ButterKnife
+    implementation rootProject.ext.dependencies.butterknife
+    annotationProcessor rootProject.ext.dependencies.butterknifeCompiler
     //Gson serialization library
     implementation rootProject.ext.dependencies.gson
     //RxJava
@@ -53,7 +52,7 @@ dependencies {
     //Images
     implementation rootProject.ext.dependencies.glide
     implementation rootProject.ext.dependencies.glideOkHttp
-    kapt rootProject.ext.dependencies.glideCompiler
+    annotationProcessor rootProject.ext.dependencies.glideCompiler
     //Network
     implementation rootProject.ext.dependencies.okhttp
     implementation rootProject.ext.dependencies.okhttpLogging
@@ -63,7 +62,7 @@ dependencies {
     //Architecture components
     implementation rootProject.ext.dependencies.archRuntime
     implementation rootProject.ext.dependencies.archExtensions
-    kapt rootProject.ext.dependencies.archCompiler
+    annotationProcessor rootProject.ext.dependencies.archCompiler
     //ExoPlayer
     implementation rootProject.ext.dependencies.exoPlayer
 
