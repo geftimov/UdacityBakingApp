@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
     <com.google.android.exoplayer2.ui.SimpleExoPlayerView
         android:id="@+id/recipeStepVideo"
         android:layout_width="match_parent"
         android:layout_height="500dp"
-        app:resize_mode="fill" />
+        app:resize_mode="fill"/>
+
+    <ImageView
+        android:id="@+id/recipeStepImage"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/recipe_step_height"
+        android:visibility="gone"
+        tools:ignore="ContentDescription"/>
 
     <TextView
         android:id="@+id/recipeStepDescription"
@@ -21,6 +28,6 @@
         android:paddingStart="@dimen/margin_xlarge"
         android:textColor="@color/dark_grey"
         android:textSize="@dimen/text_medium"
-        tools:text="1/2 cup blueberries\n1/2 cup almond milk" />
+        tools:text="1/2 cup blueberries\n1/2 cup almond milk"/>
 
 </LinearLayout>

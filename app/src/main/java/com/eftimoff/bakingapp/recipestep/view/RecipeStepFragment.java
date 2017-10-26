@@ -6,8 +6,10 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.eftimoff.bakingapp.R;
 import com.eftimoff.bakingapp.app.injection.AppComponent;
 import com.eftimoff.bakingapp.app.models.Step;
@@ -27,12 +29,17 @@ import butterknife.BindView;
 
 public class RecipeStepFragment extends BaseFragment {
 
+    private static final String CURRENT_POSITION = "current_position";
+
     @BindView(R.id.recipeStepDescription)
     TextView recipeStepDescription;
     @BindView(R.id.recipeStepVideo)
     SimpleExoPlayerView recipeStepVideo;
+    @BindView(R.id.recipeStepImage)
+    ImageView recipeStepImage;
 
     private SimpleExoPlayer exoPlayer;
+    private long currentPosition;
 
     public static RecipeStepFragment newInstance(Step step) {
         RecipeStepFragment fragment = new RecipeStepFragment();
@@ -64,12 +71,45 @@ public class RecipeStepFragment extends BaseFragment {
 
         recipeStepDescription.setText(getStep().getDescription());
 
+        loadThumbnail();
+
+        currentPosition = getSavedCurrentPosition(savedInstanceState);
+    }
+
+    private void loadThumbnail() {
+        if (getStep().getThumbnailURL() == null || getStep().getThumbnailURL().trim().isEmpty()) {
+            recipeStepImage.setVisibility(View.GONE);
+        } else {
+            Glide.with(recipeStepImage).load(getStep().getThumbnailURL()).into(recipeStepImage);
+        }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        initializePlayer();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        currentPosition = exoPlayer.getCurrentPosition();
+        releasePlayer();
+    }
+
+    private void initializePlayer() {
         if (getStep().getVideoURL() == null || getStep().getVideoURL().isEmpty()) {
             recipeStepVideo.setVisibility(View.GONE);
         } else {
-            initializePlayer(Uri.parse(getStep().getVideoURL()));
+            initializePlayer(Uri.parse(getStep().getVideoURL()), currentPosition);
         }
+    }
 
+    private long getSavedCurrentPosition(@Nullable Bundle savedInstanceState) {
+        if (savedInstanceState == null) {
+            return 0;
+        }
+        return savedInstanceState.getLong(CURRENT_POSITION, 0);
     }
 
     private Step getStep() {
@@ -77,7 +117,7 @@ public class RecipeStepFragment extends BaseFragment {
     }
 
 
-    private void initializePlayer(Uri uri) {
+    private void initializePlayer(Uri uri, long currentPosition) {
         DefaultTrackSelector trackSelector = new DefaultTrackSelector();
         DefaultLoadControl loadControl = new DefaultLoadControl();
 
@@ -87,13 +127,14 @@ public class RecipeStepFragment extends BaseFragment {
         String userAgent = Util.getUserAgent(getContext(), "Recipe");
         ExtractorMediaSource mediaSource = new ExtractorMediaSource(uri, new DefaultDataSourceFactory(getContext(), userAgent), new DefaultExtractorsFactory(), null, null);
         exoPlayer.prepare(mediaSource);
+        exoPlayer.seekTo(currentPosition);
         exoPlayer.setPlayWhenReady(true);
     }
 
     @Override
-    public void onDestroyView() {
-        releasePlayer();
-        super.onDestroyView();
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putLong(CURRENT_POSITION, exoPlayer.getCurrentPosition());
     }
 
     private void releasePlayer() {
