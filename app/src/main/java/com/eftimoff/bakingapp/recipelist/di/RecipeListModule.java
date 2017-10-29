@@ -1,6 +1,5 @@
 package com.eftimoff.bakingapp.recipelist.di;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -8,12 +7,12 @@ import android.support.v7.widget.RecyclerView;
 import com.eftimoff.bakingapp.R;
 import com.eftimoff.bakingapp.app.injection.qualifiers.ForApplication;
 import com.eftimoff.bakingapp.app.injection.scopes.PerFragment;
-import com.eftimoff.bakingapp.app.repositories.RecipeRepository;
+import com.eftimoff.bakingapp.recipelist.presenter.RecipeListPresenter;
+import com.eftimoff.bakingapp.recipelist.presenter.RecipeListPresenterImpl;
 import com.eftimoff.bakingapp.recipelist.view.RecipeAdapter;
 import com.eftimoff.bakingapp.recipelist.view.RecipeAdapterImpl;
 import com.eftimoff.bakingapp.recipelist.view.RecipeListFragment;
-import com.eftimoff.bakingapp.recipelist.viewmodels.RecipeListViewModel;
-import com.eftimoff.bakingapp.recipelist.viewmodels.RecipeListViewModelFactory;
+import com.eftimoff.bakingapp.recipelist.view.RecipeListView;
 
 import dagger.Module;
 import dagger.Provides;
@@ -29,14 +28,14 @@ public class RecipeListModule {
 
     @Provides
     @PerFragment
-    public RecipeListViewModelFactory provideRecipeListViewModelFactory(RecipeRepository recipeRepository) {
-        return new RecipeListViewModelFactory(recipeRepository);
+    public RecipeListView provideRecipeListView() {
+        return fragment;
     }
 
     @Provides
     @PerFragment
-    public RecipeListViewModel provideRecipeListViewModel(RecipeListViewModelFactory recipeListViewModelFactory) {
-        return ViewModelProviders.of(fragment, recipeListViewModelFactory).get(RecipeListViewModel.class);
+    public RecipeListPresenter provideRecipeListPresenter(RecipeListPresenterImpl presenter) {
+        return presenter;
     }
 
     @Provides

@@ -2,17 +2,17 @@ ext {
     minSdkVersion = 19
     targetSdkVersion = 26
     compileSdkVersion = 26
-    buildToolsVersion = '26.0.1'
+    buildToolsVersion = '26.0.2'
     sourceCompatibilityVersion = JavaVersion.VERSION_1_8
     targetCompatibilityVersion = JavaVersion.VERSION_1_8
 
     //PLUGINS
-    pluginBuildGradleVersion = '2.3.3'
+    pluginBuildGradleVersion = '3.0.0'
     pluginRetrolambdaVersion = '3.2.0'
 
     //RELEASE LIBRARIES
     adobeVersion = '4.13.1'
-    supportLibraryVersion = '26.0.0'
+    supportLibraryVersion = '27.0.0'
     constraintLayoutVersion = '1.0.2'
     playServicesVersion = '10.0.1'
     butterknifeVersion = '8.4.0'
@@ -30,7 +30,6 @@ ext {
     autoValueParcelVersion = '0.2.5'
     calligraphyVersion = '2.2.0'
     photoViewVersion = '2.1.2'
-    archVersion = '1.0.0-alpha5'
     exoPlayerVersion = 'r2.2.0'
 
     //DEBUG LIBRARIES
@@ -52,7 +51,7 @@ ext {
 
 ext.classpath = [
 
-        android: "com.android.tools.build:gradle:$pluginBuildGradleVersion",
+        android    : "com.android.tools.build:gradle:$pluginBuildGradleVersion",
         retrolambda: "me.tatarka:gradle-retrolambda:$pluginRetrolambdaVersion",
 
 ]
@@ -63,7 +62,7 @@ ext.dependencies = [
         /////////////////////////////////////////////////////
 
         //Android support libraries
-        supportCompat           : "com.android.support:support-v4:$supportLibraryVersion",
+        supportCompat           : "com.android.support:appcompat-v7:$supportLibraryVersion",
         supportDesign           : "com.android.support:design:$supportLibraryVersion",
         supportCardView         : "com.android.support:cardview-v7:$supportLibraryVersion",
         supportPercent          : "com.android.support:percent:$supportLibraryVersion",
@@ -107,14 +106,6 @@ ext.dependencies = [
         calligraphy             : "uk.co.chrisjenx:calligraphy:$calligraphyVersion",
         //Zoom ImageView library
         photoView               : "com.github.chrisbanes:PhotoView:$photoViewVersion",
-        //Architecture components
-        archRuntime             : "android.arch.lifecycle:runtime:$archVersion",
-        archExtensions          : "android.arch.lifecycle:extensions:$archVersion",
-        archCompiler            : "android.arch.lifecycle:compiler:$archVersion",
-        //Room
-        roomRuntime             : "android.arch.persistence.room:runtime:$archVersion",
-        roomCompiler            : "android.arch.persistence.room:compiler:$archVersion",
-        roomRxJava2             : "android.arch.persistence.room:rxjava2:$archVersion",
         //ExoPlayer
         exoPlayer               : "com.google.android.exoplayer:exoplayer:$exoPlayerVersion",
 
@@ -151,8 +142,6 @@ ext.dependencies = [
         assertJ                 : "org.assertj:assertj-core:$assertjVersion",
         robolectric             : "org.robolectric:robolectric:$robolectricVersion",
         robolectricShadow       : "org.robolectric:shadows-support-v4:$robolectricShadowsVersion",
-        //Room
-        roomTesting             : "android.arch.persistence.room:testing:$archVersion"
 
 ]
 

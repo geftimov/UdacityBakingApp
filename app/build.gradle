@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -60,10 +59,6 @@ dependencies {
     compile rootProject.ext.dependencies.retrofit
     compile rootProject.ext.dependencies.retrofitGson
     compile rootProject.ext.dependencies.retroftiRxJava
-    //Architecture components
-    compile rootProject.ext.dependencies.archRuntime
-    compile rootProject.ext.dependencies.archExtensions
-    annotationProcessor rootProject.ext.dependencies.archCompiler
     //ExoPlayer
     compile rootProject.ext.dependencies.exoPlayer
 
