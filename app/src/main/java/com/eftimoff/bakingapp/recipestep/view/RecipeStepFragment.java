@@ -93,7 +93,9 @@ public class RecipeStepFragment extends BaseFragment {
     @Override
     public void onStop() {
         super.onStop();
-        currentPosition = exoPlayer.getCurrentPosition();
+        if (exoPlayer != null) {
+            currentPosition = exoPlayer.getCurrentPosition();
+        }
         releasePlayer();
     }
 
